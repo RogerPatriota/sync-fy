@@ -1,0 +1,246 @@
+{
+	"info": {
+		"_postman_id": "3a4e18a4-2628-4a0d-9bfd-d483d5c60d23",
+		"name": "sync-fy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37743096"
+	},
+	"item": [
+		{
+			"name": "spotify",
+			"item": [
+				{
+					"name": "token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "de71fd36ff7342649f70d2fe8b0b9602",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "a955ee2227344fb69d5372635cd7a53d",
+									"type": "text"
+								}
+							]
+						},
+						"url": "https://accounts.spotify.com/api/token"
+					},
+					"response": []
+				},
+				{
+					"name": "playlist items with filter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "BQAiu6vxJg4iohEEBykUp9rvWobuX6EK_DtAo_CEOZXDigFWzh_mvTHUolRQopBVefRR8AtDhJC8ym3ilRVVbCddXer769WSHxWg3efSV15oe1YQtZlH0s6I2zaCFHXzU_5mS_CGMjo"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/playlists/7eJYIP83pf7FzSXeascmmx/tracks?fields=items(track(name, artists.name, album(name)))",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"7eJYIP83pf7FzSXeascmmx",
+								"tracks"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "items(track(name, artists.name, album(name)))"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": {
+					"clientSecret": "a955ee2227344fb69d5372635cd7a53d",
+					"clientId": "de71fd36ff7342649f70d2fe8b0b9602",
+					"accessTokenUrl": "https://accounts.spotify.com/api/token",
+					"addTokenTo": "header"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "youtube",
+			"item": [
+				{
+					"name": "Search Music by title + artist name",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/search?part=snippet&q=Fotos Rasgadas - Grito Filmes&type=video&videoCategoryId=10&key=AIzaSyBeEGwpZfQy8t8upctfQRLFbZPK95eascc",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"search"
+							],
+							"query": [
+								{
+									"key": "part",
+									"value": "snippet"
+								},
+								{
+									"key": "q",
+									"value": "Fotos Rasgadas - Grito Filmes"
+								},
+								{
+									"key": "type",
+									"value": "video"
+								},
+								{
+									"key": "videoCategoryId",
+									"value": "10"
+								},
+								{
+									"key": "order",
+									"value": "title",
+									"disabled": true
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyBeEGwpZfQy8t8upctfQRLFbZPK95eascc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "playlist items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyBeEGwpZfQy8t8upctfQRLFbZPK95eascc&id=UEx0aUxVMXZOMEV1WHdVcWFVU1JmQ0hKSmxTTG9DbVJzMS41NkI0NEY2RDEwNTU3Q0M2&part=snippet",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"playlistItems"
+							],
+							"query": [
+								{
+									"key": "playlistId",
+									"value": "PLtiLU1vN0EuXwUqaUSRfCHJJlSLoCmRs1",
+									"disabled": true
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyBeEGwpZfQy8t8upctfQRLFbZPK95eascc"
+								},
+								{
+									"key": "id",
+									"value": "UEx0aUxVMXZOMEV1WHdVcWFVU1JmQ0hKSmxTTG9DbVJzMS41NkI0NEY2RDEwNTU3Q0M2"
+								},
+								{
+									"key": "part",
+									"value": "snippet"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": {
+			"addTokenTo": "header"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
